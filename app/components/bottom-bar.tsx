@@ -70,6 +70,7 @@ export function BottomBar() {
     <div className="fixed group bottom-0 left-0 right-0 flex items-center justify-center blur-[2px] ">
       <div className="bg-neutral-900 rounded-full px-4 py-2 flex items-center gap-4 border border-neutral-800 shadow-xl">
         {/* Primary Button with Circle Background */}
+        
         <div className="relative group">
           <button className="bg-white text-black rounded-full p-2.5 hover:bg-neutral-100 transition-colors">
             <Play className="w-5 h-5 fill-current" />
