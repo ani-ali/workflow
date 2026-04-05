@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import {
   Package,
   Settings,
@@ -13,10 +12,10 @@ import {
 } from 'lucide-react'
 
 import { Home, Assets, video, Image, Workflow, Edit, More, Logo } from './components/index'
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
+import { cn } from '@/lib/utils'
 
 export default function SideBar() {
-  const [expanded, setExpanded] = useState(null)
-  const [hoveredItem, setHoveredItem] = useState(null)
 
   // ✅ CLEAN MENU
   const menuItems = [
@@ -290,113 +289,116 @@ export default function SideBar() {
         ],
       }
 
-  const getActiveData = (item) => {
+  const getActiveData = (item: any) => {
     if (item.type === 'image') return imageToolsData
     if (item.type === 'video') return videoToolsData
     if (item.type === 'edit') return editToolsData
     return null
-
   }
 
   return (
-    <nav
-      className="relative bg-[#0A0A0A]  h-screen flex flex-col"
-      onMouseLeave={() => {
-        setExpanded(null)
-        setHoveredItem(null)
-      }}
-    >
+    <nav className="relative w-[4.5rem] bg-[#0A0A0A] h-screen flex flex-col">
       {/* Logo */}
-      <div className="flex items-center justify-center h-20">
+      <div className="flex items-center justify-center h-[4.4rem]">
         <Logo className="w-6 h-6" />
       </div>
 
       {/* MENU */}
-      <div className="space-y-4 flex-1">
-        {menuItems.map((item) => {
+      <div className="space-y-3 flex-1 mt-2">
+        {menuItems.map((item,index) => {
           const Icon = item.icon
-          const isHovered = hoveredItem === item.id
           const activeData = getActiveData(item)
 
-          return (
-            <div key={item.id} className="flex justify-center  p-1">
-              <button
-                onMouseEnter={() => {
-                  setHoveredItem(item.id)
-                  if (activeData) setExpanded(item.id)
-                }}
-                className="w-full"
-              >
-                <div className="flex flex-col items-center">
-                  <div
-                    className="p-2 rounded-xl"
-                    style={{
-                      backgroundColor: isHovered ? '#292929' : 'transparent',
-                    }}
+          if (activeData) {
+            return (
+              <div key={item.id} className="flex justify-center p-1">
+                <HoverCard openDelay={100} closeDelay={200}>
+                  <HoverCardTrigger asChild>
+                    <button className="w-full">
+                      <div className="flex flex-col items-center group">
+                        <div className="p-2 rounded-xl group-hover:bg-[#292929] transition-colors">
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <span className="text-white text-[12px]">{item.label}</span>
+                      </div>
+                    </button>
+                  </HoverCardTrigger>
+                  <HoverCardContent
+                    side="right"
+                    align="start"
+                    sideOffset={12}
+                    className="p-0 border-0 bg-transparent shadow-none w-[620px]"
                   >
+                    <div className="w-[620px] rounded-2xl bg-[#111]/90 backdrop-blur-xl border border-white/10 shadow-2xl">
+                      <div className="px-6 py-4 border-b border-white/10">
+                        <h2 className="text-white font-semibold">
+                          {item.label} Apps
+                        </h2>
+                      </div>
+
+                      <div className="p-6 grid grid-cols-2 gap-8">
+                        {/* LEFT */}
+                        <div>
+                          <h3 className="text-gray-400 text-[16px] mb-3">Features</h3>
+                          {activeData.tools.map((tool: any) => {
+                            const ToolIcon = tool.icon
+                            return (
+                              <button key={tool.id} className="flex gap-3 p-2 item-center hover:bg-white/5 rounded-2xl w-full">
+                                <div className='flex justify-center items-center bg-white/5 p-3 rounded-xl'>
+                                  <ToolIcon className="w-4 h-4 text-gray-300" />
+                                </div>
+                                <div className='text-start'>
+                                  <p className="text-white text-md">{tool.title}</p>
+                                  <p className="text-gray-400 text-sm">{tool.description}</p>
+                                </div>
+                              </button>
+                            )
+                          })}
+                        </div>
+
+                        {/* RIGHT */}
+                        <div>
+                          <h3 className="text-gray-400 text-[16px] mb-3">Models</h3>
+                          {activeData.models.map((tool: any) => {
+                            const ToolIcon = tool.icon
+                            return (
+                              <button key={tool.id} className="flex gap-3 p-2 hover:bg-white/5 rounded">
+                                <div className='flex justify-center items-center bg-white/5 p-3 rounded-md'>
+                                  <ToolIcon className="w-4 h-4 text-gray-300" />
+                                </div>
+                                <div className='text-start'>
+                                  <div className="flex gap-2 items-center">
+                                    <p className="text-white text-md">{tool.title}</p>
+                                    {tool.badge && (
+                                      <span className="text-[9px] bg-purple-500 px-1 rounded">
+                                        {tool.badge}
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-gray-400 text-sm">{tool.description}</p>
+                                </div>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </HoverCardContent>
+                </HoverCard>
+              </div>
+            )
+          }
+
+          return (
+            <div key={item.id} className="flex justify-center p-1">
+              <button className="w-full group">
+                <div className="flex flex-col items-center">
+                  <div className="p-2 rounded-xl group-hover:bg-[#292929] transition-colors">
                     <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-white text-[12px]">{item.label}</span>
+                  <span className={cn("text-white  text-[12px]",index < 2 && 'mt-1')}>{item.label}</span>
                 </div>
               </button>
-
-              {activeData && expanded === item.id && (
-                <div
-                  className="absolute left-full top-0 ml-3 w-[620px] rounded-2xl 
-                  bg-[#111]/90 backdrop-blur-xl border border-white/10 
-                  shadow-2xl z-50"
-                >
-                  <div className="px-6 py-4 border-b border-white/10">
-                    <h2 className="text-white font-semibold">
-                      {item.label} Apps
-                    </h2>
-                  </div>
-
-                  <div className="p-6 grid grid-cols-2 gap-8">
-                    {/* LEFT */}
-                    <div>
-                      <h3 className="text-gray-400 text-[16px] mb-3">Features</h3>
-                      {activeData.tools.map((tool) => {
-                        const ToolIcon = tool.icon
-                        return (
-                          <button key={tool.id} className="flex gap-3 p-2 item-center   hover:bg-white/5 rounded w-full">
-                           <div className='flex justify-center items-center bg-white/5 p-3 rounded-md  '><ToolIcon className="w-4 h-4 text-gray-300" /></div> 
-                            <div className='text-start'>
-                              <p className="text-white text-md ">{tool.title}</p>
-                              <p className="text-gray-400 text-sm">{tool.description}</p>
-                            </div>
-                          </button>
-                        )
-                      })}
-                    </div>
-
-                    {/* RIGHT */}
-                    <div>
-                      <h3 className="text-gray-400 text-[16px] mb-3">Models</h3>
-                      {activeData.models.map((tool) => {
-                        const ToolIcon = tool.icon
-                        return (
-                          <button key={tool.id} className="flex gap-3 p-2 hover:bg-white/5 rounded">
-                                                       <div className='flex justify-center items-center bg-white/5 p-3 rounded-md  '><ToolIcon className="w-4 h-4 text-gray-300" /></div> 
-
-                            <div className='text-start'>
-                              <div className="flex gap-2 items-center">
-                                <p className="text-white text-md ">{tool.title}</p>
-                                {tool.badge && (
-                                  <span className="text-[9px] bg-purple-500 px-1 rounded">
-                                    {tool.badge}
-                                  </span>
-                                )}
-                              </div>
-                              <p className="text-gray-400 text-sm">{tool.description}</p>
-                            </div>
-                          </button>
-                        )
-                      })}
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           )
         })}
