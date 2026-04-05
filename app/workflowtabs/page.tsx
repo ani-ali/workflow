@@ -3,6 +3,7 @@ import { useState } from "react";
 import Sidebar from "../components/sidebar";
 import { Plus, Search, Play } from "lucide-react";
 import Link from "next/link";
+import Header from "./header";
 
 const Page = () => {
     const [activeTab, setActiveTab] = useState("my-workflows");
@@ -12,6 +13,7 @@ const Page = () => {
             <Sidebar />
 
             <div className="w-full">
+                <Header/>
                 <div className=" bg-[#0a0a0a] text-white p-8 font-sans">
                     {/* Header Banner */}
                     <div className="flex justify-between items-center w-full bg-[#111111] rounded-3xl p-10 overflow-hidden mb-8">
