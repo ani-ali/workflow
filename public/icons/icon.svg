@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="Home" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+  </symbol>
+  
+  <symbol id="Assets" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+  </symbol>
+  
+  <symbol id="video" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+  </symbol>
+  
+  <symbol id="Image" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M12 2L2 22h20L12 2z"/>
+  </symbol>
+  
+  <symbol id="Workflow" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+  </symbol>
+
+  <symbol id="Edit" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+  </symbol>
+
+  <symbol id="More" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+  </symbol>
+  
+  <symbol id="Logo" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm9 0h7v7h-7v-7z"/>
+  </symbol>
+   
+</svg>
