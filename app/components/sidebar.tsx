@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const Sidebar = () => {
   return (
     <div className="h-screen w-[72px] flex flex-col justify-between items-center pb-4">
@@ -14,20 +16,23 @@ const Sidebar = () => {
             fill="currentColor"
           ></path>
         </svg>
-        <div className="flex flex-col items-center justify-center space-y-1 ">
-          <div className="h-10 w-10 rounded-xl flex justify-center items-center mt-8 hover:bg-[#292929]">
-            <svg className="h-5 w-5" width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="1.5"
-                d="M8.538 16.773h6.923m0-9.546h-.692a2.79 2.79 0 0 0-1.958.8A2.707 2.707 0 0 0 12 9.954v4.772a2.03 2.03 0 0 1-.608 1.447c-.39.383-.918.599-1.469.599m6.23 2.727h4.155a.687.687 0 0 0 .692-.682v-4.09a.687.687 0 0 0-.692-.682h-4.154a.687.687 0 0 0-.693.681v4.091c0 .377.31.682.693.682Zm0-9.545h4.155A.687.687 0 0 0 21 9.273V5.182a.687.687 0 0 0-.692-.682h-4.154a.687.687 0 0 0-.693.682v4.09c0 .377.31.683.693.683ZM3.694 19.5h4.153a.687.687 0 0 0 .692-.682v-4.09a.687.687 0 0 0-.692-.682H3.692a.687.687 0 0 0-.692.681v4.091c0 .377.31.682.692.682Z"
-              ></path>
-            </svg>
+        <Link href="/workflowtabs">
+          <div className="flex flex-col items-center justify-center space-y-1 ">
+            <div className="h-10 w-10 rounded-xl flex justify-center items-center mt-8 hover:bg-[#292929]">
+              <svg className="h-5 w-5" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M8.538 16.773h6.923m0-9.546h-.692a2.79 2.79 0 0 0-1.958.8A2.707 2.707 0 0 0 12 9.954v4.772a2.03 2.03 0 0 1-.608 1.447c-.39.383-.918.599-1.469.599m6.23 2.727h4.155a.687.687 0 0 0 .692-.682v-4.09a.687.687 0 0 0-.692-.682h-4.154a.687.687 0 0 0-.693.681v4.091c0 .377.31.682.693.682Zm0-9.545h4.155A.687.687 0 0 0 21 9.273V5.182a.687.687 0 0 0-.692-.682h-4.154a.687.687 0 0 0-.693.682v4.09c0 .377.31.683.693.683ZM3.694 19.5h4.153a.687.687 0 0 0 .692-.682v-4.09a.687.687 0 0 0-.692-.682H3.692a.687.687 0 0 0-.692.681v4.091c0 .377.31.682.692.682Z"
+                ></path>
+              </svg>
+            </div>
+
+            <p className="text-xs font-medium text-white">Workflow</p>
           </div>
-          <p className="text-xs font-medium text-white">Workflow</p>
-        </div>
+        </Link>
       </div>
       <div className="flex flex-col items-center justify-center space-y-1 ">
         <div className="h-10 w-10 rounded-xl flex justify-center items-center mt-8 hover:bg-[#292929]">
