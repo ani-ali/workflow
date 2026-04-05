@@ -1,6 +1,6 @@
 'use client'
 import { useState, useCallback } from 'react'
-import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Panel, Controls } from '@xyflow/react'
+import { ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, Panel, Controls, Background, BackgroundVariant } from '@xyflow/react'
 import '@xyflow/react/dist/style.css'
 import { CustomNode } from '../nodes/text'
 import { InputText } from '../nodes/input-text'
@@ -85,7 +85,7 @@ export default function Render() {
     setNodes((nds) => [...nds, newNode])
   }
   return (
-    <div className="w-full" style={{ width: '90vw', height: '100vh' }}>
+    <div className="w-full" style={{ width: '94.7vw', height: '100vh' }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -98,8 +98,10 @@ export default function Render() {
         <Panel
           position="bottom-center"
         >
+          
           <BottomBar/>
         </Panel>
+        <Background color="#ccc" variant={BackgroundVariant.Dots} />
       </ReactFlow>
     </div>
   )

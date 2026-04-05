@@ -26,25 +26,25 @@ export function BottomBar() {
     {
       id: 'play',
       icon: <Play className="w-5 h-5 fill-current" />,
-      label: 'Run',
+      label: 'This',
       onClick: () => console.log('Run clicked'),
     },
     {
       id: 'clipboard',
       icon: <Clipboard className="w-4 h-4" />,
-      label: 'Copy',
+      label: 'Is',
       onClick: () => console.log('Copy clicked'),
     },
     {
       id: 'users',
       icon: <Users className="w-4 h-4" />,
-      label: 'Share',
+      label: 'Not',
       onClick: () => console.log('Share clicked'),
     },
     {
       id: 'download',
       icon: <Download className="w-4 h-4" />,
-      label: 'Download',
+      label: 'Working',
       onClick: () => console.log('Download clicked'),
     },
   ]
@@ -53,28 +53,30 @@ export function BottomBar() {
     {
       id: 'undo',
       icon: <RotateCcw className="w-4 h-4" />,
-      label: 'Undo',
+      label: 'Right',
       onClick: () => console.log('Undo clicked'),
     },
     {
       id: 'redo',
       icon: <RotateCw className="w-4 h-4" />,
-      label: 'Redo',
+      label: 'Now',
       onClick: () => console.log('Redo clicked'),
     },
   ]
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 flex items-center justify-center pb-6">
-      <div className="bg-neutral-900 rounded-full px-4 py-3 flex items-center gap-4 border border-neutral-800 shadow-xl">
+    <>
+<p className='z-50 text-white absolute bottom-15 rounded-b-none font-bold bg-black w-32 flex justify-center items-center rounded-xl -ml-14'>Coming Soon</p>
+    <div className="fixed group bottom-0 left-0 right-0 flex items-center justify-center blur-[2px] ">
+      <div className="bg-neutral-900 rounded-full px-4 py-2 flex items-center gap-4 border border-neutral-800 shadow-xl">
         {/* Primary Button with Circle Background */}
         <div className="relative group">
           <button className="bg-white text-black rounded-full p-2.5 hover:bg-neutral-100 transition-colors">
             <Play className="w-5 h-5 fill-current" />
           </button>
           {hoveredItem === 'play' && (
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-neutral-700 text-white text-xs rounded whitespace-nowrap">
-              Run
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap">
+              This
             </div>
           )}
           <button
@@ -102,7 +104,7 @@ export function BottomBar() {
                 {item.icon}
               </button>
               {hoveredItem === item.id && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-neutral-700 text-white text-xs rounded whitespace-nowrap">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap">
                   {item.label}
                 </div>
               )}
@@ -138,7 +140,7 @@ export function BottomBar() {
                 {item.icon}
               </button>
               {hoveredItem === item.id && (
-                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-neutral-700 text-white text-xs rounded whitespace-nowrap">
+                <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-white text-black text-xs rounded whitespace-nowrap">
                   {item.label}
                 </div>
               )}
@@ -147,5 +149,6 @@ export function BottomBar() {
         </div>
       </div>
     </div>
+    </>
   )
 }

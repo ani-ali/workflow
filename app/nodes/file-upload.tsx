@@ -160,17 +160,11 @@ export function FileUpload(props: any) {
 
   return (
     <div className="custom-node">
-      <div className="bg-[#1a1a1a] rounded-xl border border-green-700 min-w-[350px] max-w-[350px] overflow-hidden relative">
+      <div className="bg-[#1a1a1a] rounded-xl  overflow-hidden relative">
         {/* Header */}
-        <div className="bg-green-900/20 px-3 py-2 border-b border-green-800">
+        <div className="px-3  ">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-medium text-green-300 flex items-center gap-1">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <path d="M13 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V9L13 2Z" stroke="currentColor" strokeWidth="2"/>
-                <path d="M13 2V9H20" stroke="currentColor" strokeWidth="2"/>
-              </svg>
-              Image Viewer/Downloader
-            </span>
+           
             {(file || receivedImageUrl) && (
               <button
                 onClick={receivedImageUrl ? () => {
@@ -181,7 +175,7 @@ export function FileUpload(props: any) {
                   link.click()
                   document.body.removeChild(link)
                 } : handleDownload}
-                className="text-xs px-2 py-1 bg-green-700 hover:bg-green-600 text-white rounded transition-all"
+                className="absolute bottom-4 right-4 text-xs px-2 py-1 hover:bg-[#212121] text-white rounded  transition-all "
                 title="Download"
               >
                 Download
@@ -194,28 +188,15 @@ export function FileUpload(props: any) {
         {receivedImageUrl ? (
           <div className="p-3">
             {/* Display received image from connected node */}
-            <div className="mb-3">
-              <p className="text-[10px] text-gray-400 mb-2">Received from connected node:</p>
+            <div className="mb-10">
               <img
                 src={receivedImageUrl}
                 alt="Received image"
-                className="w-full h-[200px] object-cover rounded-md"
+                className="w-full  object-cover rounded-md"
               />
             </div>
             {/* Download button for received image */}
-            <button
-              onClick={() => {
-                const link = document.createElement('a')
-                link.href = receivedImageUrl
-                link.download = `generated-image-${Date.now()}.png`
-                document.body.appendChild(link)
-                link.click()
-                document.body.removeChild(link)
-              }}
-              className="w-full mt-2 text-xs px-2 py-2 bg-green-700 hover:bg-green-600 text-white rounded transition-all"
-            >
-              Download Image
-            </button>
+           
           </div>
         ) : file ? (
           <div className="p-3">
@@ -231,17 +212,11 @@ export function FileUpload(props: any) {
             )}
 
             {/* File Info */}
-            <div className="bg-[#0a0a0a] rounded-md p-2">
+            <div className=" rounded-md p-2">
               <div className="flex items-start gap-2">
-                <span className="text-2xl">{getFileIcon()}</span>
                 <div className="flex-1">
                   <p className="text-xs text-white font-medium truncate">{file.name}</p>
-                  <p className="text-[10px] text-gray-400 mt-1">
-                    Type: {file.type || 'Unknown'}
-                  </p>
-                  <p className="text-[10px] text-gray-400">
-                    Size: {formatFileSize(file.size)}
-                  </p>
+                 
                 </div>
               </div>
 
@@ -260,14 +235,14 @@ export function FileUpload(props: any) {
             </div>
           </div>
         ) : (
-          <div className="p-4">
+          <div className="p-2">
             {/* Upload Area */}
             <div
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-green-700 rounded-lg p-4 text-center cursor-pointer hover:bg-green-900/10 transition-colors"
+              className=" rounded-lg p-4 text-center cursor-pointer bg-[#212121] transition-colors"
             >
               <svg
-                className="mx-auto mb-2 text-green-600"
+                className="mx-auto mb-2 text-white"
                 width="32"
                 height="32"
                 viewBox="0 0 24 24"
@@ -288,8 +263,8 @@ export function FileUpload(props: any) {
                   d="M20 15V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V15"
                 />
               </svg>
-              <p className="text-xs text-gray-400">Click to upload file</p>
-              <p className="text-[10px] text-gray-500 mt-1">or drag and drop</p>
+              <p className="text-xs text-white">Click to upload file</p>
+              <p className="text-[10px] text-white/80 mt-1">or drag and drop</p>
             </div>
           </div>
         )}
@@ -331,6 +306,8 @@ export function FileUpload(props: any) {
           background: receivedImageUrl ? '#10b981' : '#6b7280',
           width: 12,
           height: 12,
+          top:30,
+          color:'red'
         }}
       />
     </div>

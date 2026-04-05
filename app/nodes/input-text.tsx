@@ -27,7 +27,7 @@ export function InputText(props) {
   return (
     <div className="custom-node relative">
       <span className="text-white text-sm ml-1">Prompt 1</span>
-      <div className="bg-[#1a1a1a] rounded-xl border border-gray-700 min-w-[350px] overflow-hidden">
+      <div className="bg-[#1a1a1a] rounded-xl  min-w-[350px] overflow-hidden">
         <div className="m-2 p-1.5 rounded-md bg-[#212121]">
           <textarea
             value={text}

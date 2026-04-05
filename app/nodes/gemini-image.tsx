@@ -1,5 +1,5 @@
-"use client"
-import { Position, Handle, useUpdateNodeInternals, useReactFlow } from '@xyflow/react'
+'use client'
+import { Position, useUpdateNodeInternals, useReactFlow, Handle } from '@xyflow/react'
 import { useAtom } from 'jotai'
 import { v4 as uuid } from 'uuid'
 import { edgesAtom } from '../states/edges'
@@ -49,7 +49,7 @@ export function GeminiImage(props: any) {
             }
           }
           return node
-        })
+        }),
       )
     }
   }, [imageUrl, description, props.id, setNodes])
@@ -76,7 +76,7 @@ export function GeminiImage(props: any) {
     const result = await generateImage(promptText)
 
     if (result) {
-      console.log('Image generated:', result);
+      console.log('Image generated:', result)
     }
   }
 
@@ -84,8 +84,7 @@ export function GeminiImage(props: any) {
 
   return (
     <div className="custom-node">
-      <div className="bg-[#1a1a1a] rounded-xl border border-purple-700 min-w-[350px] max-w-[350px] overflow-hidden relative">
-        {/* Header */}
+      {/* <div className="bg-[#1a1a1a] rounded-xl border border-purple-700 min-w-[350px] max-w-[350px] overflow-hidden relative">
         <div className="bg-purple-900/20 px-3 py-2 border-b border-purple-800">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-purple-300 flex items-center gap-1">
@@ -119,7 +118,6 @@ export function GeminiImage(props: any) {
           </div>
         </div>
 
-        {/* Generated Image Display */}
         {imageUrl && (
           <div className="p-2 bg-[#0a0a0a]">
             <img
@@ -134,7 +132,6 @@ export function GeminiImage(props: any) {
           </div>
         )}
 
-        {/* Prompt Input */}
         <div className="m-2 p-1.5 rounded-md bg-[#212121] relative">
           <textarea
             value={displayPrompt}
@@ -145,7 +142,6 @@ export function GeminiImage(props: any) {
             disabled={isLoading}
           />
 
-          {/* Generate button */}
           <button
             onClick={handleGenerateImage}
             disabled={isLoading}
@@ -169,25 +165,9 @@ export function GeminiImage(props: any) {
           </button>
         </div>
 
-        {/* Status indicator */}
-        {isLoading && (
-          <div className="px-3 pb-2">
-            <div className="text-xs text-purple-400 animate-pulse">
-              Creating image with Gemini Nano...
-            </div>
-          </div>
-        )}
+     
 
-        {error && (
-          <div className="px-3 pb-2">
-            <div className="text-xs text-red-400">
-              Error: {error}
-            </div>
-          </div>
-        )}
-      </div>
 
-      {/* Input handles */}
       {handles.map((handleId, index) => (
         <Handle
           key={handleId}
@@ -202,7 +182,6 @@ export function GeminiImage(props: any) {
         />
       ))}
 
-      {/* Output handle */}
       <Handle
         type="source"
         position={Position.Right}
@@ -213,6 +192,79 @@ export function GeminiImage(props: any) {
           height: 12,
         }}
       />
+    </div> */}
+      <div className="relative min-h-96 w-64 rounded-3xl border border-border bg-bg">
+        {imageUrl ? (
+          <img
+            src={imageUrl}
+            alt="Generated image"
+            className="flex-grow !w-[237px] rounded-xl m-2"
+            style={{ maxHeight: '256px', objectFit: 'cover' }}
+          />
+        ) : isLoading ? (
+          <div className="m-4 bg-gray-700 animate-pulse flex h-[16rem] flex-grow items-center justify-center rounded-md bg-inner text-[10px] font-bold text-text">
+            Loading...
+          </div>
+        ) : (
+          <div className="m-4 flex h-[16rem] flex-grow items-center justify-center rounded-md bg-inner text-[10px] font-bold text-text">
+            Results will appear here.
+          </div>
+        )}
+
+        <div className="mx-4 mt-2 flex-grow border-t border-t-inner"></div>
+        <div className="mx-4 mt-2 h-[4.5rem]">
+          <textarea
+            value={displayPrompt}
+            placeholder='Write your prompt here'
+            onChange={(e) => {
+              setPrompt(e.target.value)
+              setPromptChange(true)
+            }}
+            rows={5}
+            className="bg-bg resize-none text-xs !outline-none text-white visited:border-0 visited:ring-0 active:ring-0"
+          >
+            {' '}
+          </textarea>
+        </div>
+        <button
+          onClick={handleGenerateImage}
+          disabled={isLoading}
+          className="absolute bottom-2 right-2 h-8 w-16 rounded-xl border border-border text-xs text-text"
+        >
+          Run
+        </button>
+      </div>
+      {handles.map((handleId, index) => (
+        <Handle
+          key={handleId}
+          type="target"
+          position={Position.Left}
+          style={{
+            marginTop: index * 30,
+            width: 12,
+            height: 12,
+            top:35,
+            backgroundColor: 'var(--color-blue-400)'
+          }}
+          id={handleId}
+        > <span className="text-blue-400 b text-xs -ml-12 -top-3.5 absolute left-2 font-bold whitespace-nowrap">
+        Prompt {index + 1}
+      </span></Handle>
+      ))}
+
+      <Handle
+        type="source"
+        position={Position.Right}
+        id="output"
+        style={{
+          background: isLoading ? '#9333ea' : '#7c3aed',
+          width: 12,
+          height: 12,
+          
+        }}
+      > <span className="text-orange-400 text-xs ml-2 -top-3.5 absolute left-2 font-bold whitespace-nowrap">
+      Image 
+    </span></Handle>
     </div>
   )
 }
