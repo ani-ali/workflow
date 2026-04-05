@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Sidebar from "../components/sidebar";
 import { Plus, Search, Play } from "lucide-react";
+import Link from "next/link";
 
 const Page = () => {
     const [activeTab, setActiveTab] = useState("my-workflows");
@@ -22,10 +23,13 @@ const Page = () => {
                                 Create custom node-based Workflows linking tools and models for
                                 automated creative control
                             </p>
-                            <button className="flex items-center gap-2 bg-transparent px-3 py-2 rounded-2xl font-medium transition-colors border-2 border-[#1d1c1c] hover:bg-[#111111] cursor-pointer">
+                            <Link href={'Untitledworkflow'}>
+                                <button className="flex items-center gap-2 bg-transparent px-3 py-2 rounded-2xl font-medium transition-colors border-2 border-[#1d1c1c] hover:bg-[#111111] cursor-pointer">
+                           
                                 <Plus size={18} strokeWidth={3} />
                                 Create New Workflow
                             </button>
+                             </Link>
                         </div>
 
                         {/* Right Image */}
